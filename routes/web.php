@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AdminController::class,"login"]);
-Route::post('/login', [AdminController::class,"authentication"]);
+Route::post('/login', [AdminController::class, "authentication"]);
+
+
+
+Route::middleware('auth:web')->group(function () {
+
+    Route::get('/', [AdminController::class, "login"]);
+});
