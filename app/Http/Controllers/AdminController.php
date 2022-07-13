@@ -23,6 +23,6 @@ class AdminController extends Controller
           ])) {
                return redirect()->route('/');
           }
-          return back()->withErrors('Invalid Password/ Email');
+          return redirect()->back()->withErrors('Invalid Password/ Email');
      }
 }
