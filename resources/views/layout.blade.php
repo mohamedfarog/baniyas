@@ -1,256 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.3/css/bootstrap-combined.min.css">
+<link rel="stylesheet" href="{{ URL::asset('css/news.css') }}" />
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Baniyas</title>
-</head>
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+    <!-- Font Awesome -->
+    
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css"
+rel="stylesheet"
+/>
+<link rel="stylesheet" href="sweetalert2.min.css">
 
-    :root {
-        --header-height: 3rem;
-        --nav-width: 68px;
-        --first-color: #4723D9;
-        --first-color-light: #AFA5D9;
-        --white-color: #F7F6FB;
-        --body-font: 'Nunito', sans-serif;
-        --normal-font-size: 1rem;
-        --z-fixed: 100
-    }
-
-    *,
-    ::before,
-    ::after {
-        box-sizing: border-box
-    }
-
-    body {
-        position: relative;
-        margin: var(--header-height) 0 0 0;
-        padding: 0 1rem;
-        font-family: var(--body-font);
-        font-size: var(--normal-font-size);
-        transition: .5s
-    }
-
-    a {
-        text-decoration: none
-    }
-
-    .header {
-        width: 100%;
-        height: var(--header-height);
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 1rem;
-        background-color: var(--white-color);
-        z-index: var(--z-fixed);
-        transition: .5s
-    }
-
-    .header_toggle {
-        color: var(--first-color);
-        font-size: 1.5rem;
-        cursor: pointer
-    }
-
-    .header_img {
-        width: 35px;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        border-radius: 50%;
-        overflow: hidden
-    }
-
-    .header_img img {
-        width: 40px
-    }
-
-    .l-navbar {
-        position: fixed;
-        top: 0;
-        left: -30%;
-        width: var(--nav-width);
-        height: 100vh;
-        background-color: var(--first-color);
-        padding: .5rem 1rem 0 0;
-        transition: .5s;
-        z-index: var(--z-fixed)
-    }
-
-    .nav {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow: hidden
-    }
-
-    .nav_logo,
-    .nav_link {
-        display: grid;
-        grid-template-columns: max-content max-content;
-        align-items: center;
-        column-gap: 1rem;
-        padding: .5rem 0 .5rem 1.5rem
-    }
-
-    .nav_logo {
-        margin-bottom: 2rem
-    }
-
-    .nav_logo-icon {
-        font-size: 1.25rem;
-        color: var(--white-color)
-    }
-
-    .nav_logo-name {
-        color: var(--white-color);
-        font-weight: 700
-    }
-
-    .nav_link {
-        position: relative;
-        color: var(--first-color-light);
-        margin-bottom: 1.5rem;
-        transition: .3s
-    }
-
-    .nav_link:hover {
-        color: var(--white-color)
-    }
-
-    .nav_icon {
-        font-size: 1.25rem
-    }
-
-    .show {
-        left: 0
-    }
-
-    .body-pd {
-        padding-left: calc(var(--nav-width) + 1rem)
-    }
-
-    .active {
-        color: var(--white-color)
-    }
-
-    .active::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 2px;
-        height: 32px;
-        background-color: var(--white-color)
-    }
-
-    .height-100 {
-        height: 100vh
-    }
-
-    @media screen and (min-width: 768px) {
+    <style>
         body {
-            margin: calc(var(--header-height) + 1rem) 0 0 0;
-            padding-left: calc(var(--nav-width) + 2rem)
-        }
-
-        .header {
-            height: calc(var(--header-height) + 1rem);
-            padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
-        }
-
-        .header_img {
-            width: 40px;
-            height: 40px
-        }
-
-        .header_img img {
-            width: 45px
-        }
-
-        .l-navbar {
-            left: 0;
-            padding: 1rem 1rem 0 0
-        }
-
-        .show {
-            width: calc(var(--nav-width) + 156px)
-        }
-
-        .body-pd {
-            padding-left: calc(var(--nav-width) + 188px)
-        }
+    background-color: #fbfbfb;
     }
-</style>
+    @media (min-width: 991.98px) {
+    main {
+    padding-left: 0px;
+    }
+    }
+    
+    /* Sidebar */
+    .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+    }
+    
+    @media (max-width: 991.98px) {
+    .sidebar {
+    width: 100%;
+    }
+    }
+    .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    }
+    
+    .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    }
+    </style>
+    <!-- MDB -->
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"
+></script>
+</head>
+<body>
+<!--Main Navigation-->
+<header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+          </a>
+          <a id="news" href="news" class="nav-link list-group-item list-group-item-action py-2 ripple">
+            <i class="fa-solid fa-futbol fa-fw me-3"></i><span>News</span>
+          </a>
 
-<body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
-    </header>
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BBBootstrap</span> </a>
-                <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a> <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div>
-            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-        </nav>
-    </div>
-    <!--Container Main start-->
-    <div class="height-100 bg-light">
-        <h4>Main Components</h4>
-    </div>
-    <!--Container Main end-->
+          <a id="gallery"  href="gallery" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-chart-area fa-fw me-3"></i><span>Gallery</span></a>
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
 
-            const showNavbar = (toggleId, navId, bodyId, headerId) => {
-                const toggle = document.getElementById(toggleId),
-                    nav = document.getElementById(navId),
-                    bodypd = document.getElementById(bodyId),
-                    headerpd = document.getElementById(headerId)
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <img src="/images/baniyaslogo2.png" height="25" alt="MDB Logo"
+            loading="lazy" />
+        </a>
+        <!-- Search form -->
+        <form class="d-none d-md-flex input-group w-auto my-auto">
+          <input autocomplete="off" type="search" class="form-control rounded"
+            placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px;" />
+          <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+        </form>
 
-                // Validate that all variables exist
-                if (toggle && nav && bodypd && headerpd) {
-                    toggle.addEventListener('click', () => {
-                        // show navbar
-                        nav.classList.toggle('show')
-                        // change icon
-                        toggle.classList.toggle('bx-x')
-                        // add padding to body
-                        bodypd.classList.toggle('body-pd')
-                        // add padding to header
-                        headerpd.classList.toggle('body-pd')
-                    })
-                }
-            }
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+          <!-- Notification dropdown -->
 
-            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+          <!-- Avatar -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+              id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
+                height="22" alt="Avatar" loading="lazy" />
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="#">My profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Settings</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+  <!--Main Navigation-->
 
-            /*===== LINK ACTIVE =====*/
-            const linkColor = document.querySelectorAll('.nav_link')
-
-            function colorLink() {
-                if (linkColor) {
-                    linkColor.forEach(l => l.classList.remove('active'))
-                    this.classList.add('active')
-                }
-            }
-            linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-            // Your code to run since DOM is loaded and ready
-        });
-    </script>
-
+  <!--Main layout-->
+  <main style="margin-top: 100px; margin-left: 250px; ">
+    <div class="container-fluid pt-6">
+      @yield('content')
+  </main>
+  <!--Main layout-->
 </body>
+
+<script>
+  var currentLocation = window.location.pathname.split("/");
+  if(currentLocation.length>1&&currentLocation[1]){
+    var element = document.getElementById(currentLocation[1]);
+    element.classList.add('active');
+  
+  }
+</script>
+
 
 </html>
