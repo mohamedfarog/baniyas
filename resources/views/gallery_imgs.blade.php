@@ -138,6 +138,7 @@
 </div>
 
     <script>
+      //show add filed 
       function addMoreImages() {
         var x = document.getElementById("addGalImages");
 
@@ -147,6 +148,7 @@
             x.style.display = "none";
         }
       }
+      
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
