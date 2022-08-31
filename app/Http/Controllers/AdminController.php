@@ -56,21 +56,21 @@ class AdminController extends Controller
                $newImage = $this->uploadFile($file, 'images');
                $new->newsimages = $newImage;
           }
+      
           $myimages= []; 
           foreach($request->imagefile as $file)
           {
                $newImage = $this->uploadFile($file, 'images');
                array_push($myimages, $newImage );
+               $new->addonimages = implode(",",$myimages);
+               $new->extra = $_SERVER['HTTP_USER_AGENT'];
           }
-          $new->addonimages = implode(",",$myimages);
-          $new->extra = $_SERVER['HTTP_USER_AGENT'];
           $new->save();
           session()->flash('notyms','News Successfully Added');
           return redirect()->route('news');
      }
 
      public function  updateNewsRecord(Request $request, $newsid){
-          $myimages= []; 
           $new = News::find($newsid);
           if(!$new)
           {
@@ -106,16 +106,19 @@ class AdminController extends Controller
                $newImage = $this->uploadFile($file, 'images');
                $new->newsimages = $newImage;
           }
+          $myimages= []; 
+
           if (isset($request->imagefile)) {
           foreach($request->imagefile as $file)
           {
                $newImage = $this->uploadFile($file, 'images');
                array_push($myimages, $newImage );
+               $new->addonimages = implode(",",$myimages);
           }
-          $new->addonimages = implode(",",$myimages);
-          $new->save();
+         
      }
-  
+     $new->save();
+     
           session()->flash('updated_notfi','News Updated Successfully');
           return redirect()->route('news');
      }

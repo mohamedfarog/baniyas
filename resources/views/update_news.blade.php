@@ -28,7 +28,7 @@
      <div class="col-6">
       <label for="category"> Choose category: </label>
      <select name="category" id="category"  class="col-12 newscat">
-      <option>{{$news_data->cat}}</option>
+      <option value={{$news_data->newscategory}} >{{$news_data->cat}}</option>
       <option value=0>First Team</option>
       <option value=1>Academy</option>
       <option value=2>Football School</option>

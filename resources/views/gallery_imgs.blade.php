@@ -119,7 +119,7 @@
               <div class="alert alert-danger" style="display:none"></div>
               <form action="{{url('update_gallery_image')}}" method="POST" enctype="multipart/form-data">
                   @csrf 
-          
+  
                   <div class="form-group">
                       <img src="good_morning.jpg" alt="Good Morning Friends" id="update_gal_image" height="125px; width: 150px;" />  
                       <input type="file" class="form-control" id="galleryImages" placeholder="images" name="gallery_images" style="margin-top: 20px;" >   

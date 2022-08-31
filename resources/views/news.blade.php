@@ -1,6 +1,7 @@
 @extends('layout') 
 @section('content')
 
+
 @if (session()->has('updated_notfi'))
 <h5 class="alert alert-success">{{ session('updated_notfi') }}</h5>
 @endif
@@ -13,7 +14,6 @@
 
 <a type="button" class="btn btn-outline-primary add_news" data-mdb-ripple-color="dark" href="{{ route('add_news') }}">Add news</a>
 {{-- <a type="button" class="btn btn-primary add_news" href="{{ route('add_news') }}">+</a> --}}
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
   function submitForm(){
@@ -39,6 +39,7 @@ function confirmDelete(){
   @foreach ($all_news as $new)
     <div class="news-card col-sm-2">
       <a href="#" class="news-card__card-link"></a>
+
       <img src={{$new->newsimages}} alt="" class="news-card__image">
       <div class="news-card__text-wrapper">
         <h2 class="news-card__title">{{$new->newstitle}}</h2>
