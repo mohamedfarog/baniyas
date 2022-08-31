@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\News;
 use App\Models\Gallery;
 use App\Models\Images;
-
 use App\Traits\fileUpload;
 use Illuminate\Support\Facades\Validator;
 use File;
@@ -14,7 +13,7 @@ use Illuminate\Support\Arr;
 use PhpParser\Node\Expr\FuncCall;
 use Carbon\Carbon;
 
-
+//mohhh
 class AdminController extends Controller
 {
   
