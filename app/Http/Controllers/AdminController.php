@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,11 +13,12 @@ use File;
 use Illuminate\Support\Arr;
 use PhpParser\Node\Expr\FuncCall;
 use Carbon\Carbon;
+use App\Models\User;
 
 
 class AdminController extends Controller
 {
-  
+
      public function addnews(Request $request)
      {
           return view('add_news');
@@ -122,9 +124,11 @@ class AdminController extends Controller
           return redirect()->route('news');
      }
 
+
    
      public function login(Request $request)
      {
+
           return view('welcome');
      }
      public function authentication(Request $request)

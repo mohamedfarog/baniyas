@@ -15,15 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [AdminController::class, "authentication"]);
+
 Route::get('/login',function(){
     return view("login");
 })->name('login');
+Route::post('/login', [AdminController::class, "authentication"]);
 
-// Route::middleware('auth:web')->group(function () {s
-// Route::get('/', [AdminController::class, "login"]);
+
+Route::middleware('auth:web')->group(function () {
 Route::get('/', [AdminController::class, 'login'])->name('/');
 Route::get('news', [AdminController::class, 'viewNews'])->name('news');
+
 Route::get('add_news', [AdminController::class, 'addNews'])->name('add_news');
 Route::get('update_news/{newsid}', [AdminController::class, 'updateNews'])->name('update_news');
 Route::post('submit_news_data', [AdminController::class, 'AddNewsRecord'])->name('submit_news_data');
@@ -41,8 +43,11 @@ Route::post('delete_gallery/{galleryid}', [AdminController::class, 'deleteGaller
 Route::get('gallery_images', [AdminController::class, 'viewGalleryImages'])->name('gallery_images');
 Route::post('submit_gallery_images/{gid}', [AdminController::class, 'addGalleryImages'])->name('submit_gallery_images');
 Route::post('delete_gallery_images/{imgid}', [AdminController::class, 'deleteGalleryImages'])->name('delete_gallery_images');
-
 Route::post('update_gallery_image', [AdminController::class, 'updateGalleryImage'])->name('update_gallery_image');
 
-// });
+    
+// Route::get('/', [AdminController::class, "login"]);
+
+
+});
 

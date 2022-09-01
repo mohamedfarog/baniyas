@@ -59,7 +59,6 @@
     <div class="user-image mb-3 text-center">
       <div class="imgPreview" > </div>
   </div>
- 
     <div class="custom-file">
       <input type="file" name="imagefile[]"  class="custom-file-input" id="myimages"  multiple="multiple">
       <label class="custom-file-label" for="myimages">Choose image</label>
